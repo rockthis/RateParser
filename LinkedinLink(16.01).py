@@ -47,6 +47,21 @@ for i in range (len(finalpath)):
         company_names.append(a.getText())
 
 
+duplicates = []                                             #проверка на уникальность списка
+for value in company_names:
+    if company_names.count(value) > 1:
+        if value not in duplicates:
+            duplicates.append(value)
+
+
+for el in duplicates:
+    indices = [i for i, x in enumerate(company_names) if x == el]
+    del indices[0]
+    for j in indices[::-1]:
+        del company_names[j]
+        del linkedin_link[j]
+
+
 def unique_list(l):                                     #проверка на уникальность списка
     ulist = []
     [ulist.append(x) for x in l if x not in ulist]
