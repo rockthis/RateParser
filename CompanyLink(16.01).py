@@ -9,7 +9,7 @@ import json
 from openpyxl import load_workbook
 
 
-workbook = xlrd.open_workbook('forex_10emp_900.xlsx')
+workbook = xlrd.open_workbook('forex_200emp.xlsx')
 worksheet = workbook.sheet_by_index(0)
 rows = worksheet.nrows
 
@@ -22,11 +22,11 @@ ua = UserAgent()
 header = {'user-agent': ua.chrome}
 company_links = []
 
-for i in range(0,len(links)):
+for i in range(0, len(links)):
 
     while True:
         ua = UserAgent()
-        header = {'user-agent': ua.chrome}
+        header = {'user-agent' : ua.chrome }
         page = requests.get(
             links[i],
             headers=header)
@@ -69,11 +69,11 @@ for i in range(0,len(links)):
 
 for el in company_links:
     print(el)
-wb = load_workbook(filename='forex_10emp_900.xlsx')
+wb = load_workbook(filename='forex_200emp.xlsx')
 sheet = wb.active
 for i in range(0,len(company_links)):
     sheet.cell(row=2 + i, column=4).value = company_links[i]
-wb.save('forex_10emp_900.xlsx')
+wb.save('forex_200emp.xlsx')
 
 
 

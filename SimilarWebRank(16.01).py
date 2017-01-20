@@ -7,7 +7,7 @@ import re
 from decimal import *
 from openpyxl import load_workbook
 
-workbook = xlrd.open_workbook('forex_10emp_900.xlsx')
+workbook = xlrd.open_workbook('binary_result.xlsx')
 worksheet = workbook.sheet_by_index(0)
 rows = worksheet.nrows
 company_links = []
@@ -25,7 +25,7 @@ for i in range (len(company_links)):
         headers=header)
     soup = BeautifulSoup(page.text, 'lxml')
     b = len(soup.find_all('span',{'class':'rankingItem-value js-countable'}))
-    wb = load_workbook(filename='forex_10emp_900.xlsx')
+    wb = load_workbook(filename='binary_result.xlsx')
     sheet = wb.active
     if b > 0 :
         rating = soup.find('span',{'class':'rankingItem-value js-countable'}).getText()
@@ -36,7 +36,7 @@ for i in range (len(company_links)):
             sheet.cell(row=2 + i, column=1).value = temp
         else:
             print(company_links[i],'Low Rating')
-            sheet.cell(row=2 + i, column=1).value = 'Low Rating'
+            sheet.cell(row=2 + i, column=1).value = temp
     else:           # Проверка, если нет global rank, проверяем по total visits
             c = len(soup.find_all('span',  {'class' :'engagementInfo-valueNumber js-countValue'}))
             if c > 0:
@@ -57,7 +57,7 @@ for i in range (len(company_links)):
                 print(company_links[i], 'No rating')
                 sheet.cell(row=2 + i, column=1).value = 'No rating'
 
-    wb.save('forex_10emp_900.xlsx')
+    wb.save('binary_result.xlsx')
 
 
 # temp = soup.find_all('div', {'class': 'rankingItem fadeInDown rankingItem--global'})

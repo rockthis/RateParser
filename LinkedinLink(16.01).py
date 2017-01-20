@@ -5,26 +5,26 @@ from xlsxwriter import Workbook
 import xlrd
 import os
 
-workbook = Workbook('forex_10emp_900.xlsx')
+workbook = Workbook('forex_200emp.xlsx')
 worksheet = workbook.add_worksheet()
 worksheet.write(0,0,'SimilarWeb')
 worksheet.write(0,1,'CompanyName')
 worksheet.write(0,2,'LinkedinLink')
 worksheet.write(0,3, 'CompanySite')
 
-pathmac = os.path.expanduser('~/Desktop/Payzoff/linkedin/new_files/Forex/forex_finance_10emp_899/')
-path = 'C:\\Users\\Admin\\Desktop\\htmlfolder\\'
+pathmac = os.path.expanduser('~/Desktop/Payzoff/linkedin/new_files/Forex/forex_finance_more200epm_170/')
+path = 'C:\\Users\\Admin\\Desktop\\Linkedin_files\\Forex\\forex_finance_200empl_324q\\'
 
 filename = []
 finalpath = []
 
-# for i in range (len(os.listdir(path))):                 #Выбираем файлы в директории windows
-#     filename.append(os.listdir(path)[i])
-#     finalpath.append(path + str(filename[i]))
+for i in range (len(os.listdir(path))):                 #Выбираем файлы в директории windows
+    filename.append(os.listdir(path)[i])
+    finalpath.append(path + str(filename[i]))
 
-for i in range (len(os.listdir(pathmac))):                 #Выбираем файлы в директории mac
-    filename.append(os.listdir(pathmac)[i])
-    finalpath.append(pathmac + str(filename[i]))
+# for i in range (len(os.listdir(pathmac))):                 #Выбираем файлы в директории mac
+#     filename.append(os.listdir(pathmac)[i])
+#     finalpath.append(pathmac + str(filename[i]))
 
 def read_file(path):                                     #Функция чтения файла
     file = open(path, encoding="utf8")
