@@ -5,7 +5,7 @@ from xlsxwriter import Workbook
 import xlrd
 import os
 
-workbook = Workbook('forex_200emp.xlsx')
+workbook = Workbook('gambling_1_10.xlsx')
 worksheet = workbook.add_worksheet()
 worksheet.write(0,0,'SimilarWeb')
 worksheet.write(0,1,'CompanyName')
@@ -13,7 +13,7 @@ worksheet.write(0,2,'LinkedinLink')
 worksheet.write(0,3, 'CompanySite')
 
 pathmac = os.path.expanduser('~/Desktop/Payzoff/linkedin/new_files/Forex/forex_finance_more200epm_170/')
-path = 'C:\\Users\\Admin\\Desktop\\Linkedin_files\\Forex\\forex_finance_200empl_324q\\'
+path = 'C:\\Users\\Admin\\Desktop\\Linkedin_files\\Gambling\\1-10(from 50 page)\\'
 
 filename = []
 finalpath = []

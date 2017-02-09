@@ -1,5 +1,4 @@
 import requests
-import time
 from fake_useragent import UserAgent
 from bs4 import BeautifulSoup
 from xlsxwriter import Workbook
@@ -7,9 +6,12 @@ import xlrd
 import re
 import json
 from openpyxl import load_workbook
+import time
 
 
-workbook = xlrd.open_workbook('forex_200emp.xlsx')
+file_name = 'gambling_1-10_1000.xlsx'
+
+workbook = xlrd.open_workbook(file_name)
 worksheet = workbook.sheet_by_index(0)
 rows = worksheet.nrows
 
@@ -34,6 +36,7 @@ for i in range(0, len(links)):
         # print(page.status_code)
         a = soup.find_all('code', {"id" : "stream-footer-embed-id-content" })
 
+
         # print(a.__len__())
 
         # b= a.__len__()
@@ -48,6 +51,8 @@ for i in range(0, len(links)):
             # f.close()
         else:
             break
+        time.sleep(1)
+
 
 
     a = soup.find_all('code', {"id" : "stream-footer-embed-id-content" })
@@ -67,13 +72,11 @@ for i in range(0, len(links)):
     else:
         company_links.append('No site')
 
-for el in company_links:
-    print(el)
-wb = load_workbook(filename='forex_200emp.xlsx')
-sheet = wb.active
-for i in range(0,len(company_links)):
-    sheet.cell(row=2 + i, column=4).value = company_links[i]
-wb.save('forex_200emp.xlsx')
+    wb = load_workbook(filename=file_name)
+    sheet = wb.active
+    for i in range(0,len(company_links)):
+        sheet.cell(row=2 + i, column=4).value = company_links[i]
+    wb.save(file_name)
 
 
 

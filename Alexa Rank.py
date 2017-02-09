@@ -12,7 +12,7 @@ from selenium.common.exceptions import NoSuchElementException
 from random import randint
 
 driver = webdriver.Chrome('C:\\Users\\Admin\\Downloads\\chromedriver')
-file_name = 'gambling_51-1000.xlsx'
+file_name = 'gambling_11-50.xlsx'
 driver.implicitly_wait(4)
 
 def check_exists_by_xpath(xpath):
@@ -29,7 +29,7 @@ for i in range (sheet.max_row -1 ):
     company_links.append(sheet.cell(row=2 + i, column=4).value)
 
 
-for i in range (283,len(company_links)):
+for i in range (150,len(company_links)):
     wb = load_workbook(filename=file_name)
     sheet = wb.active
     driver.get(company_links[i])
